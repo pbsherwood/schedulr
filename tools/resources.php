@@ -1,11 +1,16 @@
 <?php
 
-include_once("../header_code.php");
+$is_admin = false;
+include_once("../config.php");
+if (constant("global_advanced_login_display") != '1')
+{
+	include_once("../header_code.php");
+}
 $conn = new mysqli(constant("global_mysql_server"), constant("global_mysql_user"), constant("global_mysql_password"), constant("global_mysql_database"));
 
 $term = "%" . $conn->real_escape_string($_GET["term"]) . "%";
 
-if ($is_admin)
+if ($is_admin || constant("global_advanced_login_display") == '1')
 {
 	$result = $conn->query("select schedulr_items_id as id, title, start, end, repeat_id as resourceId from schedulr_items");
 }
@@ -18,7 +23,7 @@ $data = array();
 while ($row = $result->fetch_assoc())
 {
 	$guests = array();
-	$query = "SELECT email, first_name, last_name, phone FROM schedulr_users WHERE schedulr_users_id in (select users_id from schedulr_guests where items_id = " . $row['id'] . ")";
+	$query = "SELECT first_name, last_name FROM schedulr_users WHERE schedulr_users_id in (select users_id from schedulr_guests where items_id = " . $row['id'] . ")";
 	$result2 = $conn->query($query);
 
 	while ($row2 = $result2->fetch_assoc())

@@ -25,6 +25,8 @@ $(function() { // document ready
 	$('#event_to').val(init_datetime);
 	$('#repeat_to').val(init_datetime);
 		
+	$("#dialog-event_content").dialog({ autoOpen: false, modal: true, width:350 });
+		
 	function update_tips( t ) 
 	{
 		tips.text( t ).addClass( "ui-state-highlight" );

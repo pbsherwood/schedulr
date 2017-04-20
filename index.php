@@ -66,7 +66,8 @@
 						$("#event-remove-all").data( "deleteType", 'all' );
 						$("#event-remove-all").data( "id", event.id );
 						$("#event-remove-all").data( "repeat_id", tmp_repeat_id );
-						$("#dialog-event_content").dialog({ modal: true, title: event.title, width:350 });
+						$("#dialog-event_content").dialog({title: event.title});
+						$("#dialog-event_content").dialog( "open" );
 					});
 				}
 			});
