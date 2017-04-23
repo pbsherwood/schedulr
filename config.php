@@ -9,10 +9,10 @@ define('global_mysql_database', 'DATABASE');
 // Title. Used in page title and header
 define('global_title', 'Schedulr');
 
-// Set to '1' to enable reservation reminders. '0' otherwise - Not currently implemented
+// Set to '1' to enable reservation reminders. '0' otherwise
 define('global_schedulr_reminders', '0');
 
-// Reservation reminders are sent from this email - Not currently implemented
+// Reservation reminders are sent from this email
 // Should be an email address that you own, and that is handled by your web host provider
 define('global_schedulr_reminders_email', 'admin@test.com');
 
